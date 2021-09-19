@@ -21,7 +21,7 @@ const initialState = {
 };
 let snackTimeout;
 
-export const { appStore, AppProvider } = State(initialState, 'app');
+export const { Store, Provider } = State(initialState);
 
 export const onAppMount = () => async ({ update, getState, dispatch }) => {
 	update('app', { mounted: true });
