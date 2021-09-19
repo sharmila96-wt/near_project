@@ -1,9 +1,8 @@
 {
-    "name": "nft-market",
+    "name": "market",
     "version": "1.0.0",
-    "description": "NEAR NFT Market Reference Implementation",
-    "author": "Matt Lockyer | NEAR Protocol",
-    "license": "MIT",
+    "description": " Market Reference Implementation",
+    "author": "  ",
     "dependencies": {
         "bn": "^1.0.5",
         "copy-to-clipboard": "^3.3.1",
