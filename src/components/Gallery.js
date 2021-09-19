@@ -6,7 +6,6 @@ import {
 } from '../utils/near-utils';
 import { getMarketStoragePaid, loadItems } from '../state/views';
 import { handleAcceptOffer, handleRegisterStorage, handleSaleUpdate } from '../state/actions';
-import { useHistory } from '../utils/history';
 import {Token} from './Token';
 
 
@@ -87,11 +86,11 @@ export const Gallery = ({ app, views, update, contractAccount, account, loading,
 			tab < 3 && 
 			<center>
 				{
-					tab !== 2 && <button onClick={() => update('app.filter', filter === 2 ? 1 : 2)} style={{background: '#fed'}}>{filter === 1 ? 'All' : 'Sales'}</button>
+					tab !== 2 && <button onClick={() => update('app.filter', filter === 2 ? 1 : 2)} style={{background: '#fed'}}>{filter === 1 ? 'All' :  'For Sales'}</button>
 				}
-				<button onClick={() => update('app.sort', sort === 2 ? 1 : 2)} style={{ background: sort === 1 || sort === 2 ? '#fed' : ''}}>Date {sort === 1 && '⬆️'}{sort === 2 && '⬇️'}</button>
+				<button onClick={() => update('app.sort', sort === 2 ? 1 : 2)} style={{ background: sort === 1 || sort === 2 ? '#fed' : ''}}> {sort === 2 ? 'Newest first':'By date '  }{sort === 1 && '⬇️'}{sort === 2 && '⬆️'}</button>
 				{
-					tab !== 2 && <button onClick={() => update('app.sort', sort === 4 ? 3 : 4)} style={{ background: sort === 3 || sort === 4 ? '#fed' : ''}}>Price {sort === 3 && '⬆️'}{sort === 4 && '⬇️'}</button>
+					tab !== 2 && <button onClick={() => update('app.sort', sort === 4 ? 3 : 4)} style={{ background: sort === 3 || sort === 4 ? '#fed' : ''}}>{sort === 4 ? 'Price (high to low)' :  'Price (low to high)'} {sort === 3 && '⬆️'}{sort === 4 && '⬇️'}</button>
 				}
 			</center>
 		}
@@ -102,21 +101,14 @@ export const Gallery = ({ app, views, update, contractAccount, account, loading,
 				token_id,
 				sale_conditions = {},
 				bids = {},
-				royalty = {}
+				
 			}) =>
 				<div key={token_id} className="item">
 					<img src={media} onClick={() => history.pushState({}, '', window.location.pathname + '?t=' + token_id)} />
 					<p>{accountId !== owner_id ? `Owned by ${formatAccountId(owner_id)}` : `You own this!`}</p>
 					{ Object.keys(sale_conditions).length > 0 && <>
-						<h4>Royalties</h4>
-						{
-							Object.keys(royalty).length > 0 ?
-								Object.entries(royalty).map(([receiver, amount]) => <div key={receiver}>
-									{receiver} - {amount / 100}%
-								</div>)
-								:
-								<p>This token has no royalties.</p>
-						}
+						
+						
 					</>
 					}
 					{
@@ -167,20 +159,12 @@ export const Gallery = ({ app, views, update, contractAccount, account, loading,
 						token_id,
 						sale_conditions = {},
 						bids = {},
-						royalty = {}
+				
 					}) => <div key={token_id} className="item">
 						<img src={media} onClick={() => history.pushState({}, '', window.location.pathname + '?t=' + token_id)} />
 						{
 							marketStoragePaid !== '0' ? <>
-								<h4>Royalties</h4>
-								{
-									Object.keys(royalty).length > 0 ?
-										Object.entries(royalty).map(([receiver, amount]) => <div key={receiver}>
-											{receiver} - {amount / 100}%
-										</div>)
-										:
-										<p>This token has no royalties.</p>
-								}
+								
 								{
 									Object.keys(sale_conditions).length > 0 && <>
 										<h4>Current Sale Conditions</h4>
@@ -256,4 +240,3 @@ export const Gallery = ({ app, views, update, contractAccount, account, loading,
 
 	</>;
 };
-
