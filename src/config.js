@@ -4,7 +4,7 @@ module.exports = function getConfig() {
 	let config = {
 		networkId: "testnet",
 		nodeUrl: "https://rpc.testnet.near.org",
-		// walletUrl: 'http://localhost:1234',
+		// walletUrl: 'http://localhost:3000',
 		walletUrl: "https://wallet.testnet.near.org",
 		helperUrl: "https://helper.testnet.near.org",
 		contractName,
