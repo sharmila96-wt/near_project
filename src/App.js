@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { appStore, onAppMount } from './state/app';
+import { store, onAppMount } from './state/app';
 
 import { Wallet } from './components/Wallet';
 import { Contract } from './components/Contract';
 import { Gallery } from './components/Gallery';
 
-import Avatar from 'url:./img/avatar.jpg';
+import Avatar from 'url:./img/Art.png';
 import NearLogo from 'url:./img/near_icon.svg';
 
 import './App.scss';
 
 const App = () => {
-	const { state, dispatch, update } = useContext(appStore);
+	const { state, dispatch, update } = useContext(store);
 
 	const { app, views, app: {tab, snack}, near, wallet, contractAccount, account, loading } = state;
 
@@ -67,9 +67,9 @@ const App = () => {
 
 		{
 			signedIn && <div id="tabs">
-				<div onClick={() => update('app.tab', 1)} style={{ background: tab === 1 ? '#fed' : '' }}>Market</div>
-				<div onClick={() => update('app.tab', 2)} style={{ background: tab === 2 ? '#fed' : '' }}>My NFTs</div>
-				<div onClick={() => update('app.tab', 3)} style={{ background: tab === 3 ? '#fed' : '' }}>Mint</div>
+				<div onClick={() => update('app.tab', 1)} style={{ background: tab === 1 ? '#fed' : '' }}>Home</div>
+				<div onClick={() => update('app.tab', 2)} style={{ background: tab === 2 ? '#fed' : '' }}>My ads</div>
+				<div onClick={() => update('app.tab', 3)} style={{ background: tab === 3 ? '#fed' : '' }}>Sell</div>
 			</div>
 		}
 
